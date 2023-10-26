@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd17s57ubrvln"]
+
+[ext_resource type="Texture2D" uid="uid://b0wkyreing42i" path="res://assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_dhwrx"]
+[ext_resource type="Script" path="res://script/level_select.gd" id="1_qgtj1"]
+
+[node name="level_select" type="Node2D"]
+script = ExtResource("1_qgtj1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_dhwrx")
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 208.0
+offset_right = 798.0
+offset_bottom = 434.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer_01" type="HBoxContainer" parent="TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="level_01" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_01"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "01"
+
+[node name="level_02" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_01"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "02"
+
+[node name="level_03" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_01"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "03"
+
+[node name="level_04" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_01"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "04"
+
+[node name="level_05" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_01"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "05"
+
+[node name="HBoxContainer_02" type="HBoxContainer" parent="TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="level_06" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_02"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "06"
+
+[node name="level_07" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_02"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "07"
+
+[node name="level_08" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_02"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "08"
+
+[node name="level_09" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_02"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "09"
+
+[node name="level_10" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_02"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "10
+"
+
+[node name="Button" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 166.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 45
+text = "< Back"
+
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/HBoxContainer_01/level_01" to="." method="_on_level_01_pressed"]
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]

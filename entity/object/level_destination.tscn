@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca3vebkys771t"]
+
+[ext_resource type="Script" path="res://script/object/level_destination.gd" id="1_iotk6"]
+[ext_resource type="Texture2D" uid="uid://yrn4menviwlc" path="res://assets/Tileset/FreeCuteTileset/Tileset.png" id="1_s0v05"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw4jw"]
+
+[node name="level_destination" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_iotk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.37072, 1.57072)
+shape = SubResource("RectangleShape2D_pw4jw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s0v05")
+region_enabled = true
+region_rect = Rect2(80, 48, 48, 32)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

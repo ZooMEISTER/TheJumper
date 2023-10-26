@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc0qkw3xgx5m8"]
+
+[ext_resource type="Script" path="res://script/main_menu.gd" id="1_3t5kb"]
+[ext_resource type="Texture2D" uid="uid://b0wkyreing42i" path="res://assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="1_d1gog"]
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource("1_3t5kb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_d1gog")
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 176.0
+offset_right = 711.0
+offset_bottom = 470.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer"]
+layout_mode = 2
+
+[node name="Label_Title" type="Label" parent="TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "The Jumper
+ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Btn_Select_Level" type="Button" parent="TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Select Level"
+
+[node name="Btn_Quit" type="Button" parent="TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Quit"
+
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/Btn_Select_Level" to="." method="_on_btn_select_level_pressed"]
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/Btn_Quit" to="." method="_on_btn_quit_pressed"]

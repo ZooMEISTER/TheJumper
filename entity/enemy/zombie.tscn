@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfbbwejbhnnj0"]
+
+[ext_resource type="Texture2D" uid="uid://8v5j5h633ni1" path="res://assets/Apocalypse Character Pack/Zombie/Walk.png" id="1_wljq8"]
+[ext_resource type="Script" path="res://script/entity/Zombie.gd" id="1_yqwsr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fu4dc"]
+
+[sub_resource type="Animation" id="Animation_1vb3r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(300, 70, 12, 26)]
+}
+
+[sub_resource type="Animation" id="Animation_f0qhw"]
+resource_name = "zombie_walk"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(300, 70, 12, 26), Rect2(11, 69, 12, 27), Rect2(42, 69, 13, 27), Rect2(74, 70, 14, 26), Rect2(107, 71, 13, 25), Rect2(140, 70, 12, 26), Rect2(173, 69, 13, 27), Rect2(204, 69, 15, 27), Rect2(235, 70, 16, 26), Rect2(268, 71, 14, 25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uj6xe"]
+_data = {
+"RESET": SubResource("Animation_1vb3r"),
+"zombie_walk": SubResource("Animation_f0qhw")
+}
+
+[node name="zombie" type="Area2D"]
+script = ExtResource("1_yqwsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.63778, 0.797778)
+shape = SubResource("CapsuleShape2D_fu4dc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wljq8")
+region_enabled = true
+region_rect = Rect2(300, 70, 12, 26)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "zombie_walk"
+libraries = {
+"": SubResource("AnimationLibrary_uj6xe")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

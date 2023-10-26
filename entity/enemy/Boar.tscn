@@ -1,0 +1,195 @@
+[gd_scene load_steps=16 format=3 uid="uid://ba8dems0o288p"]
+
+[ext_resource type="Texture2D" uid="uid://b0pnb0bg7blhw" path="res://assets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Idle/Idle-Sheet.png" id="1_kyf25"]
+[ext_resource type="Script" path="res://script/entity/enemy/Boar.gd" id="1_nfcbc"]
+[ext_resource type="Script" path="res://script/class/state_mechine.gd" id="3_a2rxr"]
+[ext_resource type="Texture2D" uid="uid://iscpv1gcfcd7" path="res://assets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Run/Run-Sheet.png" id="3_l8v1u"]
+[ext_resource type="Texture2D" uid="uid://b4261yw8obinw" path="res://assets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Walk/Walk-Base-Sheet.png" id="4_dtlgj"]
+[ext_resource type="Script" path="res://script/class/hit_box.gd" id="6_ee683"]
+[ext_resource type="Script" path="res://script/class/hurt_box.gd" id="7_20q8n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m610c"]
+radius = 16.0
+height = 48.0
+
+[sub_resource type="Animation" id="Animation_psqog"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_kyf25"), ExtResource("1_kyf25"), ExtResource("1_kyf25"), ExtResource("1_kyf25")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(2, 5, 40, 27), Rect2(52, 6, 38, 26), Rect2(100, 5, 38, 27), Rect2(148, 5, 38, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_a6k5w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_kyf25")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(2, 5, 40, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_ifg8x"]
+resource_name = "Run"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_l8v1u"), ExtResource("3_l8v1u"), ExtResource("3_l8v1u"), ExtResource("3_l8v1u"), ExtResource("3_l8v1u"), ExtResource("3_l8v1u")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(4, 3, 39, 29), Rect2(52, 2, 39, 28), Rect2(100, 3, 39, 29), Rect2(148, 5, 39, 27), Rect2(196, 6, 38, 26), Rect2(244, 5, 39, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_qwbtn"]
+resource_name = "Walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_dtlgj"), ExtResource("4_dtlgj"), ExtResource("4_dtlgj"), ExtResource("4_dtlgj"), ExtResource("4_dtlgj"), ExtResource("4_dtlgj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(5, 5, 38, 27), Rect2(53, 6, 38, 26), Rect2(101, 5, 38, 27), Rect2(149, 5, 38, 27), Rect2(197, 6, 38, 26), Rect2(245, 5, 38, 27)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jwl4m"]
+_data = {
+"Idle": SubResource("Animation_psqog"),
+"RESET": SubResource("Animation_a6k5w"),
+"Run": SubResource("Animation_ifg8x"),
+"Walk": SubResource("Animation_qwbtn")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pqgy2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k18k0"]
+
+[node name="Boar" type="CharacterBody2D" groups=["Boar"]]
+collision_layer = 4
+script = ExtResource("1_nfcbc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.820513, 0.833333)
+shape = SubResource("CapsuleShape2D_m610c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kyf25")
+region_enabled = true
+region_rect = Rect2(2, 5, 40, 27)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jwl4m")
+}
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_a2rxr")
+
+[node name="RayCast2D_Left" type="RayCast2D" parent="."]
+target_position = Vector2(-100, 0)
+collision_mask = 2
+
+[node name="RayCast2D_Right" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+collision_mask = 2
+
+[node name="BoarDieTimer" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+script = ExtResource("6_ee683")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+rotation = 1.5708
+scale = Vector2(1.31319, 1.31319)
+shape = SubResource("CapsuleShape2D_pqgy2")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 0
+script = ExtResource("7_20q8n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+rotation = 1.5708
+scale = Vector2(1.64842, 1.64842)
+shape = SubResource("CapsuleShape2D_k18k0")
+
+[connection signal="timeout" from="BoarDieTimer" to="." method="_on_boar_die_timer_timeout"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

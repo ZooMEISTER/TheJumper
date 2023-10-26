@@ -1,0 +1,193 @@
+[gd_scene load_steps=17 format=3 uid="uid://ccd846l8yd3aj"]
+
+[ext_resource type="Texture2D" uid="uid://b2g3ch0q26bnr" path="res://assets/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png" id="1_2ickc"]
+[ext_resource type="Script" path="res://script/entity/enemy/bee.gd" id="1_ua0d8"]
+[ext_resource type="Texture2D" uid="uid://djmweb21b28ho" path="res://assets/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Attack/Attack-Sheet.png" id="3_fofvc"]
+[ext_resource type="Script" path="res://script/class/state_mechine.gd" id="3_gtyh1"]
+[ext_resource type="Texture2D" uid="uid://dgk0nrl2u210g" path="res://assets/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Hit/Hit-Sheet.png" id="4_nx4as"]
+[ext_resource type="Script" path="res://script/class/hit_box.gd" id="6_2gybq"]
+[ext_resource type="Script" path="res://script/class/hurt_box.gd" id="7_5efqr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63chy"]
+
+[sub_resource type="Animation" id="Animation_rln0d"]
+resource_name = "Attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_fofvc"), ExtResource("3_fofvc"), ExtResource("3_fofvc"), ExtResource("3_fofvc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(21, 12, 33, 33), Rect2(87, 10, 34, 37), Rect2(150, 9, 37, 38), Rect2(213, 5, 41, 41)]
+}
+
+[sub_resource type="Animation" id="Animation_bfcyv"]
+resource_name = "Die"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_nx4as"), ExtResource("4_nx4as"), ExtResource("4_nx4as"), ExtResource("4_nx4as")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(21, 16, 34, 29), Rect2(87, 9, 34, 35), Rect2(152, 19, 35, 22), Rect2(216, 18, 36, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_wodum"]
+resource_name = "Fly"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_2ickc"), ExtResource("1_2ickc"), ExtResource("1_2ickc"), ExtResource("1_2ickc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(85, 16, 35, 28), Rect2(148, 23, 29, 21), Rect2(213, 7, 36, 37), Rect2(21, 5, 20, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_7qrbi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_2ickc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(85, 16, 35, 28)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qrd3m"]
+_data = {
+"Attack": SubResource("Animation_rln0d"),
+"Die": SubResource("Animation_bfcyv"),
+"Fly": SubResource("Animation_wodum"),
+"RESET": SubResource("Animation_7qrbi")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tefgp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pn1rb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxnrw"]
+
+[node name="bee" type="CharacterBody2D" groups=["Bee"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_ua0d8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.958799, 0.958799)
+shape = SubResource("CircleShape2D_63chy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ickc")
+region_enabled = true
+region_rect = Rect2(85, 16, 35, 28)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qrd3m")
+}
+
+[node name="BeeDieTimer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_gtyh1")
+
+[node name="Sensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor"]
+scale = Vector2(25.3478, 25.3478)
+shape = SubResource("CircleShape2D_tefgp")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+script = ExtResource("6_2gybq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(1.48499, 1.48499)
+shape = SubResource("CircleShape2D_pn1rb")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 0
+script = ExtResource("7_5efqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2(1.88682, 1.88682)
+shape = SubResource("CircleShape2D_qxnrw")
+
+[connection signal="timeout" from="BeeDieTimer" to="." method="_on_bee_die_timer_timeout"]
+[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

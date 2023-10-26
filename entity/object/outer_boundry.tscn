@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0uf8anjxhie8"]
+
+[ext_resource type="Script" path="res://script/object/outer_boundry.gd" id="1_07vkw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28iff"]
+
+[node name="outerboundry" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_07vkw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_28iff")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
